@@ -24,6 +24,6 @@ A three-tiered demonstration of machine learning applied to facial images:
  * “50 year old Caucasian female”
 
 
-All of these have more than one example with code available. Tier 1 has trained models that should be ready to use without any lengthy training process.
+All of these have more than one example with code available. Tier 1 has trained models that can serve as a starting point to work off of.
 
 We will demonstrate these with “canned” demos showing a sample image, the result of the processing and transformation. As a stretch, if all is going well, we may have live demonstration. We will not be wrapping these in applications to allow us to dedicate the most time to machine learning functions.
