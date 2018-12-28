@@ -1,7 +1,7 @@
 # Numba
 [http://numba.pydata.org/](http://numba.pydata.org/)
 
-derived from NumPy and Mamba
+derived from [NumPy](http://www.numpy.org/) and [Mamba](https://pypi.org/project/mamba/)
 
 * type-specializing JIT compiler for Python
 * uses LLVM codegen (high quality, portable backend)
@@ -11,9 +11,11 @@ derived from NumPy and Mamba
 
 * Through Anaconda:
 
-`conda install numba`\
+`conda install numba`
+
 or
-`conda update numba`\
+
+`conda update numba`
 
 * Through pip:
 
@@ -23,7 +25,8 @@ or
 
 ##### NOTE:  If using CUDA, will need to install CUDA toolkit
 `conda install cudatoolkit`
-\
+
+
 
 ### Terms to Know:
 **JIT:**  just-in-time, dynamic compilation method that combines ahead-of-time (AOT) and interpretation that identifies areas in the code that would benefit from compilation, runs after the program has started and compiles the code (usually bytecode or some kind of VM instructions) on the fly (or just-in-time, as it's called) into a form that's usually faster, typically the host CPU's native instruction set. A JIT has access to dynamic runtime information, whereas a standard compiler doesn't, and can make better optimizations like inlining functions that are used frequently.
@@ -89,8 +92,8 @@ or
 - contributed by Intel
 
 
-\
-##### References:
+
+#### References:
 **Accelerating Scientific Workloads with Numba - Siu Kwan Lam:**  [https://www.youtube.com/watch?v=6oXedk2tGfk](https://www.youtube.com/watch?v=6oXedk2tGfk)
 
 **Using Numba to program the GPU from Python:**  [https://www.youtube.com/watch?v=06VErVj9MaQ&t=814s](https://www.youtube.com/watch?v=06VErVj9MaQ&t=814s)
