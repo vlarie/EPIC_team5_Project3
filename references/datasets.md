@@ -15,6 +15,7 @@ About 20k images uploaded to Flickr from smart phones segmented into eight age g
 Over 200k images of celebrities with 40 binary attribute annotations
 [Dataset](https://www.kaggle.com/jessicali9530/celeba-dataset)
 #### Note: the bounding box data appears to be erroneous; I read a kernel that just explored the dataset. It looks like the landmark and attribute data is sound.
+[Example face generator](https://github.com/carpedm20/DCGAN-tensorflow)
 
 
 # Additional Datasets of Interest
