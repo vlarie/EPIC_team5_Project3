@@ -93,7 +93,35 @@ or
 
 
 
+## Using Numba
+
+1. Benchmark your code
+2. Add appropriate Numba decorator
+   - Benchmark your code with Numba added
+    ```
+    # Establish start time
+    start = time.time()
+    for i in range(10000000):
+        x = 2 + 5
+    # Establish end time
+    end = time.time()
+
+    print(start)
+    print(end)
+    # Print time taken
+    print(end - start)
+    ``` 
+3. 
+
+
+
 #### References:
+
+##### Quick 20 minute intro to Numba
+**Accelerating Python with the Numba JIT Compiler | SciPy 2015 | Stanley Seibert** [https://www.youtube.com/watch?v=eYIPEDnp5C4](https://www.youtube.com/watch?v=eYIPEDnp5C4)
+
+##### Comprehensive overview of Numba for Data Science
 **Accelerating Scientific Workloads with Numba - Siu Kwan Lam:**  [https://www.youtube.com/watch?v=6oXedk2tGfk](https://www.youtube.com/watch?v=6oXedk2tGfk)
 
+##### Numba integration with GPU
 **Using Numba to program the GPU from Python:**  [https://www.youtube.com/watch?v=06VErVj9MaQ&t=814s](https://www.youtube.com/watch?v=06VErVj9MaQ&t=814s)
