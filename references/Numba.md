@@ -1,7 +1,7 @@
 # Numba
 [http://numba.pydata.org/](http://numba.pydata.org/)
 
-derived from [NumPy](http://www.numpy.org/) and [Mamba](https://pypi.org/project/mamba/)
+created by Anaconda, derived from [NumPy](http://www.numpy.org/) and [Mamba](https://pypi.org/project/mamba/)
 
 * type-specializing JIT compiler for Python
 * uses LLVM codegen (high quality, portable backend)
@@ -111,6 +111,18 @@ or
     # Print time taken
     print(end - start)
     ``` 
+
+    or
+
+    ```
+    # Add timeit in front of function
+    def add(a, b):
+        return a + b
+    
+    x = 3
+    y = 4
+    %timeit add(x, y)
+    ```
 3. 
 
 
