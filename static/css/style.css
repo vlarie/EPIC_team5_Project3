@@ -11,6 +11,11 @@ hr {
     color: lightgray;
 }
 
+section {
+    width: 80%;
+    align-content: center;
+}
+
 #keypointMain {
     display: flex;
     object-fit: scale-down;
