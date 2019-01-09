@@ -6,7 +6,7 @@
 # @TODO check dependencies
 import os
 import io
-# import models
+import models
 
 from flask import Flask, request, redirect, url_for, jsonify, render_template
 
@@ -29,6 +29,7 @@ def index():
 @app.route("/keypoints/", methods=["GET", "POST"])
 def tierone():
     print()
+    models.load_model_keypoints
     # if request.method == "POST":
     #     print(request)
     #     if request.files.get("file"):
