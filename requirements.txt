@@ -2,7 +2,7 @@ Flask==1.0.2
 itsdangerous==0.24
 Jinja2==2.10
 MarkupSafe==1.0
-numpy==1.14.5
+numpy==1.15.1
 pandas==0.23.3
 python-dateutil==2.7.3
 gunicorn==19.9.0
@@ -13,7 +13,6 @@ scikit-image==0.14.0
 requests==2.19.1
 Pillow==5.2.0
 opencv-python==3.4.4.19
-numpy==1.15.1
 numba==0.39.0
 llvmlite==0.24.0
 Keras-Preprocessing==1.0.5
