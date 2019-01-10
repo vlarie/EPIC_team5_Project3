@@ -29,7 +29,7 @@ def index():
 @app.route("/keypoints/", methods=["GET", "POST"])
 def tierone():
     print()
-    models.load_model_keypoints
+    # models.load_model_keypoints
     # if request.method == "POST":
     #     print(request)
     #     if request.files.get("file"):
