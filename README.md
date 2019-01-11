@@ -1,6 +1,8 @@
 # EPIC_team5_Project3
 
-## EPIC Project 3 Description
+Deployed through Heroku:  https://epic-flask3.herokuapp.com/
+
+## EPIC Project 3 Description & Goals
 
 A three-tiered demonstration of machine learning applied to facial images:
 
@@ -8,20 +10,20 @@ A three-tiered demonstration of machine learning applied to facial images:
 
 **Tier 1** – Base, “must do”: Identify key facial points of a face image. Using the points, add accessories to the face as a demonstration of application.
 - dataset:  https://www.kaggle.com/c/facial-keypoints-detection/data
- * Show input image
- * Show image with points identified
- * Show image with accessories aligned to points
+  * Show input image
+  * Show image with points identified
+  * Show image with accessories aligned to points
 
 **Tier 2** – Reach, “will try to do”: Determine gender and estimate age of subject from a facial image.
 - dataset:  https://software.intel.com/en-us/articles/efficient-computation-on-the-edge-with-intel-movidius-neural-compute-stick?utm_source=ISTV&utm_medium=Video&utm_campaign=ISTV2018_ISTV1815
- * “This image is a 37 year old female”
- * “This image is a 20 year old male”
+  * “This image is a 37 year old female”
+  * “This image is a 20 year old male”
 
 
 **Tier 3** – Stretch, “if the stars align”: Generate an image based on text description of a face:
 - dataset:  https://software.intel.com/en-us/articles/efficient-computation-on-the-edge-with-intel-movidius-neural-compute-stick?utm_source=ISTV&utm_medium=Video&utm_campaign=ISTV2018_ISTV1815
- * “30 year old Asian male”
- * “50 year old Caucasian female”
+  * “30 year old Asian male”
+  * “50 year old Caucasian female”
 
 
 All of these have more than one example with code available. Tier 1 has trained models that can serve as a starting point to work off of.
