@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:78cd06082744b3f99112f3171030bc250987ab758b78da5a992376dbaaff2d4a
-size 829
+﻿file_name,left_eye_center_x,left_eye_center_y,right_eye_center_x,right_eye_center_y,left_eye_inner_corner_x,left_eye_inner_corner_y,left_eye_outer_corner_x,left_eye_outer_corner_y,right_eye_inner_corner_x,right_eye_inner_corner_y,right_eye_outer_corner_x,right_eye_outer_corner_y,left_eyebrow_inner_end_x,left_eyebrow_inner_end_y,left_eyebrow_outer_end_x,left_eyebrow_outer_end_y,right_eyebrow_inner_end_x,right_eyebrow_inner_end_y,right_eyebrow_outer_end_x,right_eyebrow_outer_end_y,nose_tip_x,nose_tip_y,mouth_left_corner_x,mouth_left_corner_y,mouth_right_corner_x,mouth_right_corner_y,mouth_center_top_lip_x,mouth_center_top_lip_y,mouth_center_bottom_lip_x,mouth_center_bottom_lip_y
+redSunGlasses457x172.png,322.4403,71.0892,139.6395,71.0892,,,,,,,,,,,,,,,,,,,,,,,,,,
+oakleys.png,400,155,190,155,,,,,,,,,,,,,,,,,,,,,,,,,,
+pirateHat.png,,,,,,,,,,,,,,,570,475,,,230,475,,,,,,,,,,
+pigNose2.png,,,,,,,,,,,,,,,,,,,,,230,240,440,420,40,420,,,,
+pacifier.png,,,,,,,,,,,,,,,,,,,,,,,650,230,150,230,,,,
