@@ -45,7 +45,7 @@
             <!-- @TODO update image -->
             <figure class="figure">
                 <a href="">
-                    <img id="imgContent" src="../static/images/KP.png" alt="CNN Overview">
+                    <img id="imgContent" src="../static/images/KPnetwork-architecture.png" alt="CNN Overview">
                 </a>
                 <figcaption class="figure-caption text-right">
 
@@ -86,7 +86,151 @@
             <hr id="underline">
             <h3 id ="subhead">Edge-case Testing</h3>
             <p>To see just how well our model could perform, we selected some unusual faces to analyze. We were pleasantly surprised to see how it performed.</p>
-            <!-- @TODO generate images of weird faces with keypoints -->
+            <!-- Lady showing teeth -->
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/weirdFace3.jpg" alt="Dylan original" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Original image</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/KPweird3gray.png" alt="Dylan cropped and grayscale" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Cropped and grayscale</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/KPweird3kp.png" alt="Dylan grayscale with keypoints" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Model predicted keypoints</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/KPweird3OGkp.png" alt="Dylan original with keypoints" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Original image with keypoints</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr id="contentDivider">
+            <!-- George Clooney silly expression -->
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/weirdFace4.jpg" alt="Dylan original" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Original image</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/KPweird4GrayCrop.png" alt="Dylan cropped and grayscale" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Cropped and grayscale</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/KPweird4Graykp.png" alt="Dylan grayscale with keypoints" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Model predicted keypoints</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/KPweird4OGkp.png" alt="Dylan original with keypoints" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Original image with keypoints</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr id="contentDivider">
+            <!-- Baby about to cry intensely -->
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/weirdFace5.jpg" alt="Dylan original" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Original image</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/KPweird5GrayCrop.png" alt="Dylan cropped and grayscale" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Cropped and grayscale</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/KPweird5Graykp.png" alt="Dylan grayscale with keypoints" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Model predicted keypoints</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/KPweird5OGkp.png" alt="Dylan original with keypoints" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Original image with keypoints</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr id="contentDivider">
+            <!-- Steve Buscemi as "Crazy Eyes" in Mr. Deeds -->
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/weirdFace7.jpg" alt="Dylan original" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Original image</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/KPweird7GrayCrop.png" alt="Dylan cropped and grayscale" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Cropped and grayscale</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/KPweird7Graykp.png" alt="Dylan grayscale with keypoints" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Model predicted keypoints</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/KPweird7OGkp.png" alt="Dylan original with keypoints" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Original image with keypoints</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- @TODO if time, add info about faces that didn't do well -->
+            <!-- <p>However, there were many faces that did not make it past the face detection preprocessing step.</p> -->
         </section>
         
         <hr>
@@ -99,11 +243,10 @@
             <p>To demonstrate the usefulness of models that can locate keypoints on a facial image, we decided to create an application that would accept a photo of a face, used the trained model to locate the keypoints on the face, and finally use that information to place an overlay image on the appropriate area of the face.</p>
             <p>We found that the model did not work well on standard portraits. This was because the training images were cropped to only include the face. We used OpenCV’s  Viola-Jones detector based on Haar Cascade Classifiers<a href="#references"><sup>[4]</sup></a> to find the bounding box for the face and used that for cropping. The model was much better at predicting the keypoints from cropped images.</p>
             <p>The results of the application demonstration are shown below.</p>
-            <!-- @TODO rerun keypoint notebook for images without grid marks -->
             <div class="row">
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="../static/images/KPdylanOG384x384.png" alt="Dylan" style="width:100%">
+                        <img src="../static/images/KPdylanOG384x384.png" alt="Dylan original" style="width:100%">
                         <div class="caption text-left">
                         <p id="thumbCaption">Original image</p>
                         </div>
@@ -111,7 +254,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="../static/images/96x96.png" alt="Dylan" style="width:100%">
+                        <img src="../static/images/KPdylanGrayCrop.png" alt="Dylan cropped and grayscale" style="width:100%">
                         <div class="caption text-left">
                         <p id="thumbCaption">Cropped and grayscale</p>
                         </div>
@@ -119,7 +262,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="../static/images/96x96.png" alt="Dylan" style="width:100%">
+                        <img src="../static/images/KPdylanGraykp.png" alt="Dylan grayscale with keypoints" style="width:100%">
                         <div class="caption text-left">
                         <p id="thumbCaption">Model predicted keypoints</p>
                         </div>
@@ -127,7 +270,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="../static/images/KPdylanOGkp384x384.png" alt="Dylan" style="width:100%">
+                        <img src="../static/images/KPdylanOGkp384x384.png" alt="Dylan original with keypoints" style="width:100%">
                         <div class="caption text-left">
                         <p id="thumbCaption">Original image with keypoints</p>
                         </div>
@@ -137,27 +280,28 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="../static/images/KPdylanOGeye384x384.png" alt="Dylan" style="width:100%">
+                        <img src="../static/images/KPdylanOGeye384x384.png" alt="Dylan with ski glasses" style="width:100%">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="../static/images/KPdylanOGhat384x384.png" alt="Dylan" style="width:100%">
+                        <img src="../static/images/KPdylanOGhat384x384.png" alt="Dylan with pirate hat" style="width:100%">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="../static/images/KPdylanOGnose384x384.png" alt="Dylan" style="width:100%">
+                        <img src="../static/images/KPdylanOGnose384x384.png" alt="Dylan with pig nose" style="width:100%">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="../static/images/KPdylanOGmouth384x384.png" alt="Dylan" style="width:100%">
+                        <img src="../static/images/KPdylanOGmouth384x384.png" alt="Dylan with pacifier" style="width:100%">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="caption">
+                    <!-- @TODO fix alignment of caption to match photos above -->
                     <p id="thumbCaption">Several overlay images using the various predicted keypoints for appropriate placement</p>
                 </div>
             </div>
