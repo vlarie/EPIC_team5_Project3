@@ -11,71 +11,120 @@
 <body>
     {% include "navbar.html" %}
 
-    <div class="container-fluid">
-    <img id="imgMain" src="../static/images/1250x600.png">
+    <div class="container-fluid align-items-center" id="modelContainer">
+        <img id="imgMain" src="../static/images/1250x600.png" alt="Face Generator main image">
 
+<!-- @TODO fix spacing on photos and add caption credit where applicable -->
+<!-- @TODO update with correct info -->
+        <section id="about">
+            <h1>ABOUT</h1>
+            <hr id="underline">
+            <h3 id ="subhead">Methods</h3>
+            <p>In this portion of our project, we used pre-existing machine learning models to predict the age and gender of a given facial image. The method we used was from a project that used convolutional neural networks to train a model in a Caffe framework by Gil Levi and Tal Hassner<a href="#references"><sup>[1]</sup></a>.</p>
+            <h3 id ="subhead">Dataset</h3>
+            <p>The project used a dataset from the Adience Benchmark dataset for gender and age classification<a href="#references"><sup>[2]</sup></a>. The dataset comprised of 26,580 images (2gb) of 2,284 subjects. The images were taken from real-world imaging conditions. The images included distortions such as low-resolution or blurry images.</p>
+            <figure class="figure">
+                <a href="https://talhassner.github.io/home/projects/Adience/Adience-data.html">
+                    <img id="imgContent" src="../static/images/dataset.png" alt="Dataset"> 
+                </a>
+                <figcaption class="figure-caption text-right">
+                    <p>photo from Adience Benchmark<a href="#references"><sup>[2]</sup></a></p>
+                </figcaption>
+            </figure>
+            <h3 id ="subhead">Classification Groups</h3>
+            <p>The dataset images are labeled into eight age categories and two gender categories:</p>
+            <figure class="figure">
+            <img id="imgContent" class="mx-auto" src="../static/images/classifications.png" alt="Classifications">
+            </figure>
+        </section>
 
-    <section id="about">
-        <h1>About</h1>
-        <p>Eiusmod irure esse duis magna irure id enim duis ullamco consequat duis. Fugiat mollit consequat eu commodo officia cillum ex aliquip sint laborum aliquip laboris pariatur anim. Do reprehenderit laboris exercitation labore mollit fugiat sint non. Aliquip irure labore officia nisi elit sit voluptate ut dolor sit. Velit labore eiusmod veniam dolor nisi veniam veniam et eu laborum sit enim non minim. Cupidatat mollit occaecat ullamco tempor ullamco eu veniam in ipsum officia dolore quis commodo. Reprehenderit nulla laboris tempor esse excepteur sunt ullamco voluptate elit cupidatat pariatur eiusmod.</p>
-    </section>
+        <hr>
 
-    <hr>
+        <section id="process">
+            <h1>PROCESS</h1>
+            <hr id="underline">
+            <h3 id ="subhead">CNN Implementation in Caffe</h3>
+            <p>The method used a network architecture comprised of three convolutional neural networks with two fully-connected layers. The method was implemented using the Caffe open-source framework, developed by Berkeley AI Research.</p>
+            <!-- @TODO add link -->
+            <figure class="figure">
+                <a href="">
+                    <img id="imgContent" src="../static/images/cnn-overview.png" alt="CNN Overview">
+                </a>
+                <figcaption class="figure-caption text-right">
+                    <p>photo from Gil Levi and Tal Hassner<a href="#references"><sup>[1]</sup></a></p>
+                </figcaption>
+            </figure>
+            <h3 id ="subhead">Network Architecture</h3>
+            <p>The training for the model was performed on an Amazon GPU machine with 1,536 CUDA cores and 4GB of video memory. Training each network required about 4 hours.</p>
+            <img id="imgContent" src="../static/images/network-architecture.png" alt="Network Architecture">
+            <h3 id ="subhead">Performance</h3>
+            <p>Table 2 and Table 3 from Levi and Hassner’s paper show the accuracy results from the gender and age classification using their trained models. For age classification, accuracy is measured when the algorithm gives the exact age as well as when the algorithm is off by one adjacent age-group (one age group older or younger).</p>
+            <!-- @TODO add link -->
+            <figure class="figure">
+                <a href="">
+                    <img id="imgContent" src="../static/images/results.png" alt="Results (From Gil Levi and Tal Hassner’s paper)">
+                </a>
+                <figcaption class="figure-caption text-right">
+                    <p>photo from Gil Levi and Tal Hassner<a href="#references"><sup>[1]</sup></a></p>
+                </figcaption>
+            </figure>
+            <h3 id ="subhead">Pre-trained Model Application</h3>
+            <p>We took the pre-trained Caffe models and used OpenCV’s DNN (deep neural networks) package to import the neural network models into a Google Colab notebook to run the prediction script.</p>
+            <img id="imgContent" src="../static/images/process-overview.png" alt="Process Overview">
+            <h3 id ="subhead">TensorFlow Reimplementation</h3>
+            <p>We also found a TensorFlow re-implementation of the Gil/Hassner project using the same Adience dataset and CNN network architecture by GitHub user dpressel<a href="#references"><sup>[3]</sup></a>.</p>
+            <img id="imgContent" src="../static/images/tensorflow.png" alt="TensorFlow">
+        </section>
 
-    <section id="process">
-        <h1>Process</h1>
-        <p>Eiusmod irure esse duis magna irure id enim duis ullamco consequat duis. Fugiat mollit consequat eu commodo officia cillum ex aliquip sint laborum aliquip laboris pariatur anim. Do reprehenderit laboris exercitation labore mollit fugiat sint non. Aliquip irure labore officia nisi elit sit voluptate ut dolor sit. Velit labore eiusmod veniam dolor nisi veniam veniam et eu laborum sit enim non minim. Cupidatat mollit occaecat ullamco tempor ullamco eu veniam in ipsum officia dolore quis commodo. Reprehenderit nulla laboris tempor esse excepteur sunt ullamco voluptate elit cupidatat pariatur eiusmod.</p>
-    </section>
+        <hr>
+        
+        <section id="results">
+            <h1>RESULTS</h1>
+            <hr id="underline">
+            <p>We gathered a group of images for each age and gender groups from the Adience dataset and cropped and flipped the images for testing. We ran the images into both the Caffe and TensorFlow models with the results shown below. The green shade represents correct predictions, yellow shade represents predictions off by one age group, and the red shade represents incorrect predictions with the age group being off by more than one.</p>
+            <img id="imgContent" src="../static/images/prediction-results.png" alt="Prediction Results">
+            <p>Overall, the predictions for gender were more accurate, and the age predictions were mostly at least one age group away from the correct age group. Interestingly, the TensorFlow version performed slightly better at predicting the age groups than the Caffe model.</p>
+        </section>
 
-    <hr>
-    
-    <section id="results">
-        <h1>Results</h1>
-        <p>Eiusmod irure esse duis magna irure id enim duis ullamco consequat duis. Fugiat mollit consequat eu commodo officia cillum ex aliquip sint laborum aliquip laboris pariatur anim. Do reprehenderit laboris exercitation labore mollit fugiat sint non. Aliquip irure labore officia nisi elit sit voluptate ut dolor sit. Velit labore eiusmod veniam dolor nisi veniam veniam et eu laborum sit enim non minim. Cupidatat mollit occaecat ullamco tempor ullamco eu veniam in ipsum officia dolore quis commodo. Reprehenderit nulla laboris tempor esse excepteur sunt ullamco voluptate elit cupidatat pariatur eiusmod.</p>
-    </section>
+        <hr>
+        
+        <!-- @TODO update to interactive or static depending on time -->
+        <section id="testing">
+            <h1>TESTING</h1>
+            <hr id="underline">
+            <p>Insert summary of poll</p>
+            <button>Click here to participate!</button>
+        </section>
+        
+        <hr>
+        
+        <section id="learnings">
+            <h1>LEARNINGS</h1>
+            <hr id="underline">
+            <!-- @TODO Creepy generated faces go here -->
+            <p>By looking through the dataset images, we found that some images included motion blur, distortions, or exposure issues that may not be ideal for model training. The characteristics of real-world images such as images found on online photo repositories or social media sites may bring challenges in age and gender identification.</p>
+            <p>It was impressive to see that relatively high accuracy for age and gender classification can result from a small dataset and a simple CNN network. It would be interesting to see if using a more sophisticated CNN network and a larger dataset would improve prediction results.</p>
+            <p>OpenCV is difficult to install on a Mac, but it has some useful facial recognition system built-in that helped with cropping and placing text onto the image.</p>
+        </section>
 
-    <hr>
-    
-    <section id="testing">
-        <h1>Testing</h1>
-        <p>Eiusmod irure esse duis magna irure id enim duis ullamco consequat duis. Fugiat mollit consequat eu commodo officia cillum ex aliquip sint laborum aliquip laboris pariatur anim. Do reprehenderit laboris exercitation labore mollit fugiat sint non. Aliquip irure labore officia nisi elit sit voluptate ut dolor sit. Velit labore eiusmod veniam dolor nisi veniam veniam et eu laborum sit enim non minim. Cupidatat mollit occaecat ullamco tempor ullamco eu veniam in ipsum officia dolore quis commodo. Reprehenderit nulla laboris tempor esse excepteur sunt ullamco voluptate elit cupidatat pariatur eiusmod.</p>
-    </section>
-    
-    <hr>
-    
-    <section id="learnings">
-        <h1>Learnings</h1>
-        <p>Eiusmod irure esse duis magna irure id enim duis ullamco consequat duis. Fugiat mollit consequat eu commodo officia cillum ex aliquip sint laborum aliquip laboris pariatur anim. Do reprehenderit laboris exercitation labore mollit fugiat sint non. Aliquip irure labore officia nisi elit sit voluptate ut dolor sit. Velit labore eiusmod veniam dolor nisi veniam veniam et eu laborum sit enim non minim. Cupidatat mollit occaecat ullamco tempor ullamco eu veniam in ipsum officia dolore quis commodo. Reprehenderit nulla laboris tempor esse excepteur sunt ullamco voluptate elit cupidatat pariatur eiusmod.</p>
-    </section>
+        <hr>
 
-    <hr>
-
-    <section id="references">
-        <h4>References</h4>
-        <ul>
-            <li></li>
-        </ul>
-    </section>
+        <section id="references">
+            <h4>References</h4>
+            <hr id="underline">
+            <ol>
+                <li id="refs">
+                    Gil Levi and Tal Hassner. <a href="https://talhassner.github.io/home/publication/2015_CVPR"><i>Age and Gender Classification Using Convolutional Neural Networks</i></a>, IEEE Workshop on Analysis and Modeling of Faces and Gestures (AMFG), at the IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), Boston, June 2015 <a href="https://github.com/GilLevi/AgeGenderDeepLearning">(Repo)</a><a href="https://talhassner.github.io/home/projects/cnn_agegender/CVPR2015_CNN_AgeGenderEstimation.pdf">(PDF)</a>
+                </li>
+                <li id="refs">
+                    Eran Eidinger, Roee Enbar, and Tal Hassner, <a href="https://talhassner.github.io/home/publication/2014_IEEE_TIFS"><i>Age and Gender Estimation of Unfiltered Faces</i></a>, Transactions on Information Forensics and Security (IEEE-TIFS), special issue on Facial Biometrics in the Wild, Volume 9, Issue 12, pages 2170 - 2179, Dec. 2014 <a href="https://talhassner.github.io/home/projects/Adience/EidingerEnbarHassner_tifs.pdf">(PDF)</a>
+                </li>
+                <li id="refs">
+                    Rude Carnie, <a href="https://github.com/dpressel/rude-carnie"><i>Age and Gender Deep Learning with TensorFlow</i></a>
+                </li>
+            </ol>
+        </section>
     </div>
-
-    <!-- BUTTON Functionality -->
-    <script>
-        // Get the container element
-        var btnContainer = document.getElementById("filter-btns");
-
-        // Get all buttons with class="btn" inside the container
-        var btns = btnContainer.getElementsByClassName("btn");
-
-        // Loop through the buttons and add the active class to the current/clicked button
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function() {
-            var current = document.getElementById("filter-btns").getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-        });
-        }
-    </script>
-
 </body>
 
 <!-- FOOTER AREA -->

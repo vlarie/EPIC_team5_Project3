@@ -6,7 +6,7 @@
 # @TODO check dependencies
 import os
 import io
-import models
+# import models
 
 from flask import Flask, request, redirect, url_for, jsonify, render_template
 

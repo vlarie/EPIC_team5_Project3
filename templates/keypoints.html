@@ -11,69 +11,193 @@
 <body>
     {% include "navbar.html" %}
 
-    <div class="container-fluid">
-    <img id="imgMain" src="../static/images/1250x600.png">
+    <div class="container-fluid align-items-center" id="modelContainer">
+        <img id="imgMain" src="../static/images/1250x600.png" alt="Facial Keypoint main image">
 
+    <!-- @TODO fix spacing on photos and add caption credit where applicable -->
+    <!-- @TODO update with correct info -->
+        <section id="about">
+            <h1>ABOUT</h1>
+            <hr id="underline">
+            <h3 id ="subhead">Methods</h3>
+            <p>The purpose of this portion of the project was to train a machine learning model to identify 15 keypoints on human faces including center of each eye, tip of nose, outer end of each eyebrow, etc. To achieve this, we used a Convolutional Neural Network design recommended by Peter Skvarenina and implemented with the Keras open source neural network library running on top of the TensorFlow backend<a href="#references"><sup>[1]</sup></a>.</p>
+            <h3 id ="subhead">Dataset</h3>
+            <p>We used a dataset provided to Kaggle.com by Dr. Yoshua Bengio of the University of Montreal for Kaggle's Facial Keypoints Detection competition<a href="#references"><sup>[2]</sup></a>. The dataset consisted of 8,832 images – 7,049 with identified keypoints for training and 1,783 images for testing. However, upon investigation we discovered that nearly 5,000 of the training images had only 5 keypoints identified. Some users of the dataset have filled in the missing information with averages from the other images, but we thought this had too great a potential to produce error and chose to use only the 2,000 images with 15 keypoints identified from the original dataset.</p>
+            <!-- @TODO check for image on kaggle of dataset -->
+            <!-- @TODO create figure of keypoint list -->
+            <figure class="figure">
+                <a href="https://talhassner.github.io/home/projects/Adience/Adience-data.html">
+                    <img id="imgContent" src="../static/images/dataset.png" alt="Dataset"> 
+                </a>
+                <figcaption class="figure-caption text-right">
+                    <p>photo from Adience Benchmark<a href="#references"><sup>[2]</sup></a></p>
+                </figcaption>
+            </figure>
+        </section>
 
-    <section id="about">
-        <h1>About</h1>
-        <p>Eiusmod irure esse duis magna irure id enim duis ullamco consequat duis. Fugiat mollit consequat eu commodo officia cillum ex aliquip sint laborum aliquip laboris pariatur anim. Do reprehenderit laboris exercitation labore mollit fugiat sint non. Aliquip irure labore officia nisi elit sit voluptate ut dolor sit. Velit labore eiusmod veniam dolor nisi veniam veniam et eu laborum sit enim non minim. Cupidatat mollit occaecat ullamco tempor ullamco eu veniam in ipsum officia dolore quis commodo. Reprehenderit nulla laboris tempor esse excepteur sunt ullamco voluptate elit cupidatat pariatur eiusmod.</p>
-    </section>
+        <hr>
 
+        <section id="process">
+            <h1>PROCESS</h1>
+            <hr id="underline">
+            <h3 id ="subhead">CNN Implementation in Keras</h3>
+            <p>We implemented Skvarenina’s model in Keras with the structure shown in the diagram below. In this structure, the images are preprocessed to grayscale and converted to a 96x96 2D array of numbers between -1 and 1 used as the input to the model. The output of the model is 30 floating point numbers representing the (x, y) coordinates of each facial keypoint.</p>
+            <!-- @TODO update image -->
+            <figure class="figure">
+                <a href="">
+                    <img id="imgContent" src="../static/images/KP.png" alt="CNN Overview">
+                </a>
+                <figcaption class="figure-caption text-right">
 
-    <section id="process">
-        <h1>Process</h1>
-        <p>Eiusmod irure esse duis magna irure id enim duis ullamco consequat duis. Fugiat mollit consequat eu commodo officia cillum ex aliquip sint laborum aliquip laboris pariatur anim. Do reprehenderit laboris exercitation labore mollit fugiat sint non. Aliquip irure labore officia nisi elit sit voluptate ut dolor sit. Velit labore eiusmod veniam dolor nisi veniam veniam et eu laborum sit enim non minim. Cupidatat mollit occaecat ullamco tempor ullamco eu veniam in ipsum officia dolore quis commodo. Reprehenderit nulla laboris tempor esse excepteur sunt ullamco voluptate elit cupidatat pariatur eiusmod.</p>
-    </section>
+                    <p>from Facial keypoints detection using Neural Network<a href="#references"><sup>[3]</sup></a></p>
+                </figcaption>
+            </figure>
+            <h3 id ="subhead">Network Architecture</h3>
+            <p>The training for this model was done in Google’s Colab notebook environment using their GPU hardware accelerator option (approximately 10x faster than running in Colab without hardware acceleration). We ran the training for 100 epochs, taking just over 3 hours to complete.</p>
+            <h3 id ="subhead">Performance</h3>
+            <p>The results from our training process are shown below. After 100 epochs, accuracy leveled off and showed no further improvement in the absence of changing methodology. Our model got to ~70% accuracy for the training, but only ~30% accuracy for the test pass.</p>
+            <!-- @TODO update image -->
+            <figure class="figure">
+                <a href="">
+                    <img id="imgContent" src="../static/images/results.png" alt="Accuracy rates on training and test data">
+                </a>
+                <figcaption class="figure-caption text-right">
+                    <!-- @TODO Check with Troy on image source -->
+                    <p>photo from Gil Levi and Tal Hassner<a href="#references"><sup>[1]</sup></a></p>
+                </figcaption>
+            </figure>
+            <p>Skvarenina reports that “with some trivial tricks” he can achieve 80-90% accuracy with 30 epochs. The details of these tricks are not provided; however, upon visual inspection of our results, we felt the accuracy was fairly good in terms of distance to the training keypoint locations. In the image below, the manually identified keypoints are shown in green while our model’s predicted keypoints are shown in red.</p>
+            <!-- @TODO update image -->
+            <figure class="figure">
+                <a href="">
+                    <img id="imgContent" src="../static/images/results.png" alt="Results (From Gil Levi and Tal Hassner’s paper)">
+                </a>
+                <figcaption class="figure-caption text-right">
+                    <p>photo from Gil Levi and Tal Hassner<a href="#references"><sup>[1]</sup></a></p>
+                </figcaption>
+            </figure>
+            <p>We felt our model's keypoint placements were adequate to continue with our application. It's also difficult to determine the best approach for measuring accuracy in this model.  For a simple classifier, predictions are either purely right or purely wrong, so accuracy is usually defined as percentage of predictions which are right. For a network generating numerical output such as coordinates in an image, each prediction has its own spectrum of "rightness" based on proximity to the expected coordinates. In order to define accuracy of a group of predicted coordinates, some choice must be made on how to define the overall accuracy as a function of all the individual prediction accuracies.  Are they weighted evenly (i.e. mean error)?  Do further-off predictions hurt accuracy more (i.e. mean square error)?  Depending on the application, one approach may be better suited than the next.</p>
+        </section>
 
-    
-    <section id="results">
-        <h1>Results</h1>
-        <p>Eiusmod irure esse duis magna irure id enim duis ullamco consequat duis. Fugiat mollit consequat eu commodo officia cillum ex aliquip sint laborum aliquip laboris pariatur anim. Do reprehenderit laboris exercitation labore mollit fugiat sint non. Aliquip irure labore officia nisi elit sit voluptate ut dolor sit. Velit labore eiusmod veniam dolor nisi veniam veniam et eu laborum sit enim non minim. Cupidatat mollit occaecat ullamco tempor ullamco eu veniam in ipsum officia dolore quis commodo. Reprehenderit nulla laboris tempor esse excepteur sunt ullamco voluptate elit cupidatat pariatur eiusmod.</p>
-    </section>
+        <hr>
+        
+        <section id="results">
+            <h1>RESULTS</h1>
+            <hr id="underline">
+            <h3 id ="subhead">Edge-case Testing</h3>
+            <p>To see just how well our model could perform, we selected some unusual faces to analyze. We were pleasantly surprised to see how it performed.</p>
+            <!-- @TODO generate images of weird faces with keypoints -->
+        </section>
+        
+        <hr>
+        
+        <!-- @TODO update to interactive or static depending on time -->
+        <section id="testing">
+            <h1>TESTING</h1>
+            <hr id="underline">
+            <h3 id ="subhead">Application Demonstration</h3>
+            <p>To demonstrate the usefulness of models that can locate keypoints on a facial image, we decided to create an application that would accept a photo of a face, used the trained model to locate the keypoints on the face, and finally use that information to place an overlay image on the appropriate area of the face.</p>
+            <p>We found that the model did not work well on standard portraits. This was because the training images were cropped to only include the face. We used OpenCV’s  Viola-Jones detector based on Haar cascades to find the bounding box for the face and used that for cropping. The model was much better at predicting the keypoints from cropped images.</p>
+            <p>The results of the application demonstration are shown below.</p>
+            <!-- @TODO update image to two rows of 4 thumbnail images with captions -->
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/96x96.png" alt="Dylan" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Original image</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/96x96.png" alt="Dylan" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Cropped and grayscale</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/96x96.png" alt="Dylan" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Model predicted keypoints</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/96x96.png" alt="Dylan" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Original image with keypoints</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/96x96.png" alt="Dylan" style="width:100%">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/96x96.png" alt="Dylan" style="width:100%">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/96x96.png" alt="Dylan" style="width:100%">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="../static/images/96x96.png" alt="Dylan" style="width:100%">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="caption">
+                    <p id="thumbCaption">Several overlay images using the various predicted keypoints for appropriate placement</p>
+                </div>
+            </div>
+        </section>
+        
+        <hr>
+        
+        <section id="learnings">
+            <h1>LEARNINGS</h1>
+            <hr id="underline">
+            <p>Datasets merit careful inspection. Fortunately, there are many datasets freely available on the internet that are useful for machine learning applications. Unfortunately, the completeness and quality cannot be guaranteed and therefore requires thorough inspection. In our case, our dataset came from a credible source (Kaggle), it was not quite as described. This may have been intentional as a problem to be solved, but would trip up an unwary user. Also, the quality of images within the dataset was inconsistent with many blurred images and some illustrations (not actual photographs). This image variety could be useful for some applications where this type of image may be encountered. For our purposes, they likely reduced the possible accuracy of the model.</p>
+            <p>Extreme accuracy may not be necessary for many applications of machine learning. Setting a ‘good enough’ standard for outputs will likely reduce model complexity and processing time required to achieve the desired results.</p>
+            <p>Numba is a Python library designed to increase machine learning performance by compiling user-defined Python functions into machine language<a href="#references"><sup>[4]</sup></a>. Although the prospects were quite promising, in practice we were not able to utilize this library effectively. Numba is best implemented with functions primarily using NumPy which are able to be completely converted to machine language using "nopython mode". None of the functions we wrote met this criteria and performed the same as they did without Numba.</p>
+            <p>Google Colab provides a useful environment for accessing both GPU and TPU performance within a notebook programming format that can be easily shared<a href="#references"><sup>[5]</sup></a>.</p>
+        </section>
 
-    
-    <section id="testing">
-        <h1>Testing</h1>
-        <p>Eiusmod irure esse duis magna irure id enim duis ullamco consequat duis. Fugiat mollit consequat eu commodo officia cillum ex aliquip sint laborum aliquip laboris pariatur anim. Do reprehenderit laboris exercitation labore mollit fugiat sint non. Aliquip irure labore officia nisi elit sit voluptate ut dolor sit. Velit labore eiusmod veniam dolor nisi veniam veniam et eu laborum sit enim non minim. Cupidatat mollit occaecat ullamco tempor ullamco eu veniam in ipsum officia dolore quis commodo. Reprehenderit nulla laboris tempor esse excepteur sunt ullamco voluptate elit cupidatat pariatur eiusmod.</p>
-    </section>
+        <hr>
+
+        <section id="references">
+            <h4>References</h4>
+            <hr id="underline">
+            <ol>
+                <li id="refs">
+                    Peter Skvarenina, <a href="https://towardsdatascience.com/detecting-facial-features-using-deep-learning-2e23c8660a7a"><i>Detecting facial features using Deep Learning</i></a>, Towards Data Science, Medium, Aug. 2017
+                </li>
+                <li id="refs">
+                    Dr. Yoshua Bengio, and James Petterson, <a href="https://www.kaggle.com/c/facial-keypoints-detection"><i>Facial Keypoints Detection</i></a>, Kaggle Competitions, Jan. 2017
+                </li>
+                <li id="refs">
+                    Shutong Zhang, and Chenyue Meng, <i>Facial keypoints detection using Neural Network</i>, Stanford University, 2016, <a href="http://cs231n.stanford.edu/reports/2016/pdfs/007_Report.pdf">(PDF)</a>
+                </li>
+                <li id="refs">
+                    Valerie Grace Wilmot, <a href="https://github.com/vlarie/EPIC_team5_Project3/blob/master/references/Numba.md"><i>Numba Overview</i></a>, GitHub, vlarie/EPIC_team5_Project3, Jan. 2019
+                </li>
+                <li id="refs">
+                    Google Colab, <a href="https://colab.research.google.com/notebooks/welcome.ipynb"><i>Hello, Colaboratory</i></a>
+                </li>
+            </ol>
+        </section>
     </div>
-
-
-    <section id="learnings">
-        <h1>Learnings</h1>
-        <p>Eiusmod irure esse duis magna irure id enim duis ullamco consequat duis. Fugiat mollit consequat eu commodo officia cillum ex aliquip sint laborum aliquip laboris pariatur anim. Do reprehenderit laboris exercitation labore mollit fugiat sint non. Aliquip irure labore officia nisi elit sit voluptate ut dolor sit. Velit labore eiusmod veniam dolor nisi veniam veniam et eu laborum sit enim non minim. Cupidatat mollit occaecat ullamco tempor ullamco eu veniam in ipsum officia dolore quis commodo. Reprehenderit nulla laboris tempor esse excepteur sunt ullamco voluptate elit cupidatat pariatur eiusmod.</p>
-    </section>
-    </div>
-
-    <hr>
-
-    <section id="references">
-        <h4>References</h4>
-        <ul>
-            <li>Kaggle Dataset https://www.kaggle.com/c/facial-keypoints-detection/data </li>
-        </ul>
-    </section>
-    </div>
-
-    <!-- BUTTON Functionality -->
-    <script>
-        // Get the container element
-        var btnContainer = document.getElementById("filter-btns");
-
-        // Get all buttons with class="btn" inside the container
-        var btns = btnContainer.getElementsByClassName("btn");
-
-        // Loop through the buttons and add the active class to the current/clicked button
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function() {
-            var current = document.getElementById("filter-btns").getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-        });
-        }
-    </script>
-
 </body>
 
 <!-- FOOTER AREA -->
