@@ -1,0 +1,282 @@
+/* GENERAL STYLES */
+body {
+    background-color: rgb(27, 27, 27);
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    padding-top: 75px;
+    /* font-family: 'Merriweather', serif; */
+    /* font-family: 'Bitter', serif; */
+}
+
+hr {
+    border-top: 1px solid rgba(255,255,255,.75);
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 0rem;
+}
+
+#underline {
+    border-top: 2px solid rgba(255, 255, 255, 0.15);
+    width: 35%;
+    margin-right: 100%;
+    margin-top: 0rem;
+}
+
+#modelContainer {
+    width: 80%!important;
+    align-content: center;
+}
+
+#imgMain {
+    display: flex;
+    object-fit: scale-down;
+    width: 100%;
+    align-content: center;
+    margin-top: 35px;
+}
+
+p {
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+
+/* NAVBAR */
+/* #navbarHeader {
+    
+} */
+
+#nav-links {
+    padding-bottom: 0px;
+}
+
+.dropdown-menu {
+    background-color: rgb(78, 78, 78);
+}
+
+.container {
+    margin-top: 5px;
+}
+
+#pills, a:link{
+    color: white;
+    text-decoration: none;
+}
+
+#nav-box {
+    color: white;
+}
+
+#myNavbar {
+    /* margin-top: 5px; */
+    padding-top: 10px;
+    padding-left: 35px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #c1c1c1;
+    z-index: 3;
+    /* -webkit-box-shadow: 0px 3px 15px 0px rgba(0,0,0,0.5); */
+    box-shadow: 0px 3px 15px 0px rgba(0,0,0,0.5);
+    background-color: #1663c7;
+    widows: 100vw;
+
+}
+
+#epic-title {
+    color: white;
+    margin-top: 5px;
+    padding-left: 0px;
+}
+
+
+/* NAVBAR GOOGLE ICONS */
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+      local('MaterialIcons-Regular'),
+      url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+      url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+      url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+  }
+  
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    margin-bottom: -8px;
+    vertical-align: -25%;
+    
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+
+/* INDEX PAGE CAROUSEL NAV */
+#carouselContainer {
+    width: 1250px;
+    margin-top: 35px;
+}
+
+#carousel-indicators {
+    padding-bottom: 0px;
+}
+
+/* @TODO figure out how to add shadow to indicators */
+#carouselIndicator {
+    text-shadow: 1px 1px 2px #1663c7, 0 0 1em #1663c7, 0 0 0.2em #1663c7;
+}
+
+#carousel-image {
+    object-fit: scale-down!important;
+    /* min-width: 100%;
+    min-height: 100%; */
+    max-width: 100%;
+    max-height: 100%;
+    align-content: center;
+}
+
+#carouselHeader {
+    margin-bottom: 15px;
+    font-size: 52px;
+    text-shadow: 1px 1px 2px #1663c7, 0 0 1em #1663c7, 0 0 0.2em #1663c7;
+}
+
+#carouselSubhead {
+    margin-bottom: 97px;
+    text-shadow: 1px 1px 2px #1663c7, 0 0 1em #1663c7, 0 0 0.2em #1663c7;
+}
+
+
+/* SECTIONS */
+#imgHeader {
+    margin-bottom: 15px;
+    font-size: 52px;
+    text-shadow: 1px 1px 2px #1663c7, 0 0 1em #1663c7, 0 0 0.2em #1663c7;
+}
+
+#imgSubhead {
+    margin-bottom: 147px;
+    text-shadow: 1px 1px 2px #1663c7, 0 0 1em #1663c7, 0 0 0.2em #1663c7;
+}
+
+section {
+    align-content: center;
+    padding: 50px;
+}
+
+h1 {
+    margin-top: 10px;
+}
+
+#subhead {
+    margin-top: 45px;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+.figure {
+    display: block;
+}
+
+#imgContent {
+    display: block;
+    object-fit: scale-down;
+    width: 80%;
+    align-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    cursor: pointer;
+    transition: 0.3s;
+} 
+
+#imgContent:hover {
+    opacity: 0.7;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption { 
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+figcaption {
+    width: 90%;
+}
+
+#thumbCaption {
+    margin-left: 0px!important;
+}
+
+#refs {
+    margin-top: 1rem;
+}
+
+
+/* FOOTER */
+
+#footer-box {
+    background-color: #1663c7;
+    /* -webkit-box-shadow: 0px -3px 15px 0px rgba(0,0,0,0.5); */
+    box-shadow: 0px -2px 15px 0px rgba(0,0,0,0.5);
+    z-index: 3;
+    color: whitesmoke;;
+    font-size: .9em;
+}
