@@ -55,7 +55,29 @@ def prep_img_keypoints(img):
     twoKGoodFaces = df.dropna()
     y = np.vstack(twoKGoodFaces[twoKGoodFaces.columns[:-1]].values)
 
-    return img
+    return img, imgCropped96
+
+def predict_keypoints(imgCropped96):
+    # Import dataset
+    df = pd.read_csv('./facialKeypoints/data/training.csv')
+    twoKGoodFaces = df.dropna()
+    y = np.vstack(twoKGoodFaces[twoKGoodFaces.columns[:-1]].values)
+    y.shape, y.dtype
+
+    load_model_keypoints()
+
+    # Creating pipeline
+    output_pipe = make_pipeline(
+        MinMaxScaler(feature_range=(-1, 1))
+    )
+    y_train = output_pipe.fit_transform(y)
+
+    predictions = model.predict(imgCropped96[np.newaxis, :, :, np.newaxis])
+
+    xy_predictions = output_pipe.inverse_transform(predictions).reshape(15, 2)
+
+
+
 
 ####  Age & Gender  ####
 # @TODO get model route 
