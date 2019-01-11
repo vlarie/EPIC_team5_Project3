@@ -97,13 +97,13 @@
             <hr id="underline">
             <h3 id ="subhead">Application Demonstration</h3>
             <p>To demonstrate the usefulness of models that can locate keypoints on a facial image, we decided to create an application that would accept a photo of a face, used the trained model to locate the keypoints on the face, and finally use that information to place an overlay image on the appropriate area of the face.</p>
-            <p>We found that the model did not work well on standard portraits. This was because the training images were cropped to only include the face. We used OpenCV’s  Viola-Jones detector based on Haar cascades to find the bounding box for the face and used that for cropping. The model was much better at predicting the keypoints from cropped images.</p>
+            <p>We found that the model did not work well on standard portraits. This was because the training images were cropped to only include the face. We used OpenCV’s  Viola-Jones detector based on Haar Cascade Classifiers<a href="#references"><sup>[4]</sup></a> to find the bounding box for the face and used that for cropping. The model was much better at predicting the keypoints from cropped images.</p>
             <p>The results of the application demonstration are shown below.</p>
-            <!-- @TODO update image to two rows of 4 thumbnail images with captions -->
+            <!-- @TODO rerun keypoint notebook for images without grid marks -->
             <div class="row">
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="../static/images/96x96.png" alt="Dylan" style="width:100%">
+                        <img src="../static/images/KPdylanOG384x384.png" alt="Dylan" style="width:100%">
                         <div class="caption text-left">
                         <p id="thumbCaption">Original image</p>
                         </div>
@@ -127,7 +127,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="../static/images/96x96.png" alt="Dylan" style="width:100%">
+                        <img src="../static/images/KPdylanOGkp384x384.png" alt="Dylan" style="width:100%">
                         <div class="caption text-left">
                         <p id="thumbCaption">Original image with keypoints</p>
                         </div>
@@ -137,22 +137,22 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="../static/images/96x96.png" alt="Dylan" style="width:100%">
+                        <img src="../static/images/KPdylanOGeye384x384.png" alt="Dylan" style="width:100%">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="../static/images/96x96.png" alt="Dylan" style="width:100%">
+                        <img src="../static/images/KPdylanOGhat384x384.png" alt="Dylan" style="width:100%">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="../static/images/96x96.png" alt="Dylan" style="width:100%">
+                        <img src="../static/images/KPdylanOGnose384x384.png" alt="Dylan" style="width:100%">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="../static/images/96x96.png" alt="Dylan" style="width:100%">
+                        <img src="../static/images/KPdylanOGmouth384x384.png" alt="Dylan" style="width:100%">
                     </div>
                 </div>
             </div>
@@ -170,8 +170,8 @@
             <hr id="underline">
             <p>Datasets merit careful inspection. Fortunately, there are many datasets freely available on the internet that are useful for machine learning applications. Unfortunately, the completeness and quality cannot be guaranteed and therefore requires thorough inspection. In our case, our dataset came from a credible source (Kaggle), it was not quite as described. This may have been intentional as a problem to be solved, but would trip up an unwary user. Also, the quality of images within the dataset was inconsistent with many blurred images and some illustrations (not actual photographs). This image variety could be useful for some applications where this type of image may be encountered. For our purposes, they likely reduced the possible accuracy of the model.</p>
             <p>Extreme accuracy may not be necessary for many applications of machine learning. Setting a ‘good enough’ standard for outputs will likely reduce model complexity and processing time required to achieve the desired results.</p>
-            <p>Numba is a Python library designed to increase machine learning performance by compiling user-defined Python functions into machine language<a href="#references"><sup>[4]</sup></a>. Although the prospects were quite promising, in practice we were not able to utilize this library effectively. Numba is best implemented with functions primarily using NumPy which are able to be completely converted to machine language using "nopython mode". None of the functions we wrote met this criteria and performed the same as they did without Numba.</p>
-            <p>Google Colab provides a useful environment for accessing both GPU and TPU performance within a notebook programming format that can be easily shared<a href="#references"><sup>[5]</sup></a>.</p>
+            <p>Numba is a Python library designed to increase machine learning performance by compiling user-defined Python functions into machine language<a href="#references"><sup>[5]</sup></a>. Although the prospects were quite promising, in practice we were not able to utilize this library effectively. Numba is best implemented with functions primarily using NumPy which are able to be completely converted to machine language using "nopython mode". None of the functions we wrote met this criteria and performed the same as they did without Numba.</p>
+            <p>Google Colab provides a useful environment for accessing both GPU and TPU performance within a notebook programming format that can be easily shared<a href="#references"><sup>[6]</sup></a>.</p>
         </section>
 
         <hr>
@@ -188,6 +188,9 @@
                 </li>
                 <li id="refs">
                     Shutong Zhang, and Chenyue Meng, <i>Facial keypoints detection using Neural Network</i>, Stanford University, 2016, <a href="http://cs231n.stanford.edu/reports/2016/pdfs/007_Report.pdf">(PDF)</a>
+                </li>
+                <li id="refs">
+                    Paul Viola, and Michael Jones, <a href="https://docs.opencv.org/3.3.0/d7/d8b/tutorial_py_face_detection.html"><i>Face Detection using Haar Cascades</i></a>, OpenCV 3.3.0
                 </li>
                 <li id="refs">
                     Valerie Grace Wilmot, <a href="https://github.com/vlarie/EPIC_team5_Project3/blob/master/references/Numba.md"><i>Numba Overview</i></a>, GitHub, vlarie/EPIC_team5_Project3, Jan. 2019

@@ -13,6 +13,7 @@
 
     <div class="container-fluid align-items-center" id="modelContainer">
         <img id="imgMain" src="../static/images/age_carousel.jpg" alt="Age Gender main image">
+        <!-- @TODO fix z-order on img captions and lock to image -->
         <div class="carousel-caption d-none d-md-block">
             <h1 id="imgHeader">Age & Gender Classifier</h1>
             <h4 id="imgSubhead">CNN trained to classify gender and age group</h4>
@@ -33,17 +34,22 @@
                 The images included distortions such as low-resolution or blurry images.</p>
             
                 
-
+<!-- @TODO - fix modal closing and size -->
             <figure class="figure">
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <img class="shadow-sm p-3 mb-5 bg-white rounded" id="homeImage" src="../static/images/AGdataset.png" alt="Dataset" width="100%">
-                        </div>
-                    </div>
-                </div>          
                 <!-- <a href="https://talhassner.github.io/home/projects/Adience/Adience-data.html"> -->
-                    <img id="imgContent" src="../static/images/AGdataset.png" alt="Dataset"  data-toggle="modal" data-target=".bd-example-modal-lg"> 
+                    <img id="imgContent" src="../static/images/AGdataset.png" alt="Dataset"> 
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+        
+                        <!-- The Close Button -->
+                        <span class="close">&times;</span>
+        
+                        <!-- Modal Content (The Image) -->
+                        <img class="modal-content" id="img01">
+        
+                        <!-- Modal Caption (Image Text) -->
+                        <div id="caption">Adience dataset</div>
+                    </div>       
                 <!-- </a> -->
                 <figcaption class="figure-caption text-right">
                     <p>photo from Adience Benchmark<a href="#references"><sup>[2]</sup></a></p>
@@ -198,5 +204,29 @@
 
 <!-- SCRIPTS AREA -->
 {% include "scripts.html" %}   
+
+<!-- JAVASCRIPT FOR MODAL IMAGES -->
+<script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById('imgContent');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() { 
+    modal.style.display = "none";
+    }
+</script>
 
 </html>
