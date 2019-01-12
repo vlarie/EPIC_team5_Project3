@@ -145,7 +145,7 @@
             <h1>TESTING</h1>
             <hr id="underline">
             <p>Did we achieve our goal of using machine learning to generate images of faces that are indistinquishable to viewers from actual photos of faces? Take our “Turing Test” to decide for yourself!</p>
-            <a href="https://www.pollev.com/epicfaces012" role="button" class="btn btn-primary btn-lg btn-block" aria-disabled="true" target="_blank">Click here to participate!</a>
+            <a href="https://www.pollev.com/epicfaces012" id="generatorButton" role="button" class="btn btn-primary btn-lg btn-block" aria-disabled="true" target="_blank">Click here to participate!</a>
         </section>
         
         <hr>
@@ -157,7 +157,7 @@
             <p>An interesting observation from this portion of the project was that it provided a good illustration of machine learning in terms of mimicking how humans learn. The process of our DCGAN learning to create faces has many parallels with humans mastering the same skill. At first children scribble and declare it’s a face. As they mature they understand that faces are round and have eyes and a mouth and therefore start drawing ‘happy faces’. They continue to progress and start adding noses, hair, shading, and color in their attempts to draw more representational faces. The following video produced from the images that the generator produced in the first training epoch illustrate this learning parallel.</p>
             <p>As the faces progress and gain features, some inbetween images disgress from the uncanny valley, to outright terrifying. A face can look scary when there is too much shading around the eyes, a large amount of white around the pupils of the eyes, facial skin having a red fleshy color, or a smile that doesn't match with the rest of the face.</p>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalCenter">
+            <button id="generatorButton" type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalCenter">
                 View at your own risk!
             </button>
             <!-- Modal -->
