@@ -23,21 +23,32 @@
             <h1>ABOUT</h1>
             <hr id="underline">
             <h3 id ="subhead">Methods</h3>
-            <p><a href="#references"><sup>[1]</sup></a>.</p>
-            <h3 id ="subhead">Dataset</h3>
-            <p></p>
+            <p>The purpose of this section of the project was to use machine learning algorithms to generate human faces that viewers would be unable to distinguish from actual photographs of faces.</p>
+            <p>To achieve our purpose, we implemented a Deep Convolutional Generative Adversarial Network [DCGAN]. This methodology uses two machine learning models, a Discriminator and a Generator, which are interconnected in a feedback loop. The discriminator is a classical Convolutional Neural Network that classifies images into categories; in this case the categories are “real” and “fake”. The discriminator is trained by presenting it with fakes created by the generator and real images from the dataset. The generator uses feedback from the discriminator to improve its ability to generate fake images that the discriminator will improperly predict are real. In narrative terms, the generator is trying to improve its ability to create fake images that will fool the discriminator and the discriminator is trying to improve its ability to detect the generators fakes. The relationship is illustrated in the diagram below.</p>
             <figure class="figure">
                 <a href="">
-                    <img id="imgContent" src="../static/images/dataset.png" alt="Dataset"> 
+                    <img id="imgContent" src="../static/images/GANDiagram.png" alt="Dataset"> 
                 </a>
                 <figcaption class="figure-caption text-right">
-                    <p>photo from <a href="#references"><sup>[2]</sup></a></p>
+                    <!-- @TODO Update caption and reference -->
+                    <p>photo from <a href="#references"><sup>O'Reilly [2]</sup></a></p>
                 </figcaption>
             </figure>
-            <h3 id ="subhead">Classification Groups</h3>
-            <p></p>
+            
+            <a href="#references"><sup>[1]</sup></a>
+
+
+            <h3 id ="subhead">Dataset</h3>
+            <!-- @TODO Update references -->
+            <p>We used the CelebA dataset(reference link) http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html made available through Kaggle.com(reference link). The dataset consists of 202,599 images of 10,177 celebrities. The dataset is annotated with 4 landmark locations (eyes, nose, corners of the mouth) and 40 binary attributes such as male, young, beard, glasses, blonde, etc.</p>
             <figure class="figure">
-            <img id="imgContent" class="mx-auto" src="../static/images/classifications.png" alt="Classifications">
+                <a href="">
+                    <img id="imgContent" src="../static/images/celebA.png" alt="CelebA"> 
+                </a>
+                <figcaption class="figure-caption text-right">
+                    <!-- @TODO Update caption and reference -->
+                    <p>photo from <a href="#references"><sup>[2]</sup></a></p>
+                </figcaption>
             </figure>
         </section>
 
@@ -46,39 +57,100 @@
         <section id="process">
             <h1>PROCESS</h1>
             <hr id="underline">
-            <h3 id ="subhead">CNN Implementation in Caffe</h3>
-            <p></p>
+            <!-- @TODO Check wording - in or with TensorFlow -->
+            <h3 id ="subhead">DCGAN Implementation in TensorFlow</h3>
+            <p>We implemented our DCGAN in TensorFlow using a model presented by Taehoon Kim(reference link https://github.com/carpedm20/DCGAN-tensorflow).</p>
+            <p>The discriminator network, illustrated in the diagram below, consists of four convolutional layers. The inputs are the pixels of the images. Each layer of the network includes a convolution, a batch normalization and a leaky ReLu to speed training. We flatten the output of the last layer and use the sigmoid activation function to get a classification. We now have a prediction P(x) whether the image is real or a fake.</p>
             <!-- @TODO add link -->
             <figure class="figure">
                 <a href="">
-                    <img id="imgContent" src="../static/images/cnn-overview.png" alt="CNN Overview">
+                    <img id="imgContent" src="../static/images/discriminatorDiagram.png" alt="Discriminator diagram">
                 </a>
                 <figcaption class="figure-caption text-right">
+                    <!-- @TODO Update caption and reference -->
                     <p>photo from Gil Levi and Tal Hassner<a href="#references"><sup>[1]</sup></a></p>
                 </figcaption>
             </figure>
+            <p>The generator is structured essentially as the reverse of the discriminator and is illustrated in the diagram below. The generator uses four deconvolutional layers. They are the exact opposite of a convolutional layers; instead of performing convolutions until the image is transformed into simple numerical data, such as a classification, we perform deconvolutions to transform numerical data into an image. The generator takes a input, called the Z vector, puts it through a series of 3 layers each with a deconvolution, batch normalization and leaky ReLu to create an image.</p>
+            <!-- @TODO add link -->
+            <figure class="figure">
+                <a href="">
+                    <img id="imgContent" src="../static/images/generatorDiagram.png" alt="Generator diagram">
+                </a>
+                <figcaption class="figure-caption text-right">
+                    <!-- @TODO Update caption and reference -->
+                    <p>photo from Gil Levi and Tal Hassner https://www.oreilly.com/ideas/deep-convolutional-generative-adversarial-networks-with-tensorflow<a href="#references"><sup>[1]</sup></a></p>
+                </figcaption>
+            </figure>
+            <p>Optimization is achieved by calculating losses for both the discriminator (when dealing with fakes and real images) and the generator (when creating fake images) and then use the Adam optimizer to minimize the loss.</p>
             <h3 id ="subhead">Network Architecture</h3>
-            <p></p>
-            <img id="imgContent" src="../static/images/network-architecture.png" alt="Network Architecture">
+            <p>The training processing for the model was performed on a MacBook Pro laptop computer with a 2.8 GHz Intel Core i& processor and 16 GB of 2133 MHz memory. Each training epoch with the full dataset required approximately 8 hours to run.</p>
             <h3 id ="subhead">Performance</h3>
-            <p></p>
+            <p>For our purpose of passable fake images, the images themselves are a better view of performance than the loss calculations. After one epoch of training the DCGAN model on more than 200,000 images the generator produced the sample images below. The images are clearly an <i>attempt</i> by the model to create faces, but only a few come close to being passable and none are entirely convincing.</p>
             <!-- @TODO add link -->
             <figure class="figure">
                 <a href="">
-                    <img id="imgContent" src="../static/images/results.png" alt="Results (From Gil Levi and Tal Hassner’s paper)">
+                    <img id="imgContent" src="../static/images/z100FirstEpoch.png" alt="Results (From Gil Levi and Tal Hassner’s paper)">
                 </a>
                 <figcaption class="figure-caption text-right">
+                    <!-- @TODO Update caption and reference -->
                     <p>photo from Gil Levi and Tal Hassner<a href="#references"><sup>[1]</sup></a></p>
                 </figcaption>
             </figure>
-            <h3 id ="subhead">Pre-trained Model Application</h3>
-            <p></p>
-            <img id="imgContent" src="../static/images/process-overview.png" alt="Process Overview">
-            <h3 id ="subhead">TensorFlow Reimplementation</h3>
-            <p><a href="#references"><sup>[3]</sup></a>.</p>
-            <img id="imgContent" src="../static/images/tensorflow.png" alt="TensorFlow">
-        
-            <iframe src="https://player.vimeo.com/video/310882940" width="640" height="640" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <p>We ran 6 more training epochs on the same model (total training time in excess of 40 hours) and achieved the results below. The results are much improved with several images being near passable fakes. However many are still unacceptable. Upon examining the images one can see that rather than getting more convincing images, the models are getting better at producing some of the variety in the dataset: angled poses, glasses, different racial characteristics.</p>
+            <!-- @TODO add link -->
+            <figure class="figure">
+                <a href="">
+                    <img id="imgContent" src="../static/images/z100SeventhEpoch.png" alt="Results (From Gil Levi and Tal Hassner’s paper)">
+                </a>
+                <figcaption class="figure-caption text-right">
+                    <!-- @TODO Update caption and reference -->
+                    <p>photo from Gil Levi and Tal Hassner<a href="#references"><sup>[1]</sup></a></p>
+                </figcaption>
+            </figure>
+            <p>Rather than pursue more training epochs, we decided to adjust some of the model variables to achieve different results. The discriminator and generator effectively encode and decode the images into a 10x10 array of floating-point numbers from -1 to 1 (the Z vector). This encoding requires the model to simplify the variability into 100 numbers. We speculated that giving the model a larger encoding space might al1ow it to encode more information in the. We tried 12x12 and 15x15 Z Vectors with the results from a single training epoch shown below.</p>
+            <div class="row">
+                <!-- @TODO Update all captions and alt text -->
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="../static/images/z100FirstEpoch.png" alt="Facial keypoint dataset without keypoints" style="width:100%">
+                        <div class="caption text-left">
+                            <p id="generatorCaption">z = 10x10<br>generated by Troy Bailey &nbsp; &copy; 2019 TEAM EPIC</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="../static/images/z144FirstEpoch.png" alt="Facial keypoint dataset with keypoints" style="width:100%">
+                        <div class="caption text-left">
+                            <p id="generatorCaption">z = 12x12<br>generated by Troy Bailey &nbsp; &copy; 2019 TEAM EPIC</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="../static/images/z225FirstEpoch.png" alt="Facial keypoint dataset without keypoints" style="width:100%">
+                        <div class="caption text-left">
+                            <p id="generatorCaption">z = 15x15<br>generated by Troy Bailey &nbsp; &copy; 2019 TEAM EPIC</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>Both the 12x12 and 15x15 Z vector models produced better images on their first training epoch than the 10x10 Z vector model. However once again rather than optimize for passable images (our goal) the models were using the additional encoding space to better represent the variety of the dataset: poses, image color palette, glasses, hair color, sexual and racial characteristics.</p>
+            <p>To counteract the observed effect of image variety conflicting with generating passable images, we decided to attempt to reduce the variety of the data set by using the annotated attributes. By filtering for the characteristics of female, young, no glasses, and brunette we eliminated much of the variation while maintaining a large sample size. We further filtered for “attractive”, because it resulted in more standard poses while eliminating very unusual poses and images with helmets and goggles that would make training more difficult. Our reduced data set was approximately 20,000 images. As such training epochs were shorter requiring only 30 mins per epoch. The results after are shown below. After 10 epochs we achieved the results below. The images are as expected more uniform and the hypothesis that reduced variety in the training data set would allow the DCGAN to produce more convincing images is confirmed. There are still unacceptable images being produced but the frequency of passable images has greatly increased.</p>
+            <figure class="figure">
+                <a href="">
+                    <img id="imgContent" src="../static/images/selectTenthEpoch.png" alt="Generator diagram">
+                </a>
+                <figcaption class="figure-caption text-right">
+                    <!-- @TODO Update caption and reference -->
+                    <p>photo from Gil Levi and Tal Hassner https://www.oreilly.com/ideas/deep-convolutional-generative-adversarial-networks-with-tensorflow<a href="#references"><sup>[1]</sup></a></p>
+                </figcaption>
+            </figure>
+            
+            <div class="container" id="timelapseGen">
+                <iframe id="timelapseGen" src="https://player.vimeo.com/video/310882940" width="640" height="640" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
         </section>
 
         <hr>
@@ -97,7 +169,7 @@
         <section id="testing">
             <h1>TESTING</h1>
             <hr id="underline">
-            <p>Insert summary of poll</p>
+            <p>So, did we achieve our goal of using machine learning to generate images of faces that viewers cannot distinguish from actual photos of faces? We will let the reader decide with the “Turing Test” presented here (link to poll)</p>
             <button>Click here to participate!</button>
         </section>
         
@@ -107,8 +179,8 @@
             <h1>LEARNINGS</h1>
             <hr id="underline">
             <!-- @TODO Creepy generated faces go here -->
-            <p></p>
-            <p></p>
+            <p>As noted in the Keypoints portion of our project, Datasets merit careful consideration. The celebA dataset has many uses and the various images are helpful for many applications. If for example the goal was to train a model to recognize certain individuals when presented in different poses and costumes, celebA would be idea. In the case of using a DCGAN to produce convincing images, the variety included in celebA will require much more complicated model and training time to master all the variety in the dataset. For our purposes, a subset of celebA with less variation, yielded better results.</p>
+            <p>An interesting observation from this portion of the project was that it provided a good illustration of machine learning in terms of mimicking how humans learn. The process of our DCGAN learning to create faces has many parallels with humans mastering the same skill. At first children scribble and declare it’s a face. As they mature they understand that faces are round and have eyes and a mouth and therefore start drawing ‘happy faces’. They continue to progress and start adding noses, hair, shading, and color in their attempts to draw more representational faces. The following video produced from the images that the generator produced in the first training epoch illustrate this learning parallel.</p>
             <p></p>
         </section>
 
@@ -118,6 +190,7 @@
             <h4>References</h4>
             <hr id="underline">
             <ol>
+                <!-- @TODO Update all references -->
                 <li id="refs">
                     Gil Levi and Tal Hassner. <a href="https://talhassner.github.io/home/publication/2015_CVPR"><i>Age and Gender Classification Using Convolutional Neural Networks</i></a>, IEEE Workshop on Analysis and Modeling of Faces and Gestures (AMFG), at the IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), Boston, June 2015 <a href="https://github.com/GilLevi/AgeGenderDeepLearning">(Repo)</a><a href="https://talhassner.github.io/home/projects/cnn_agegender/CVPR2015_CNN_AgeGenderEstimation.pdf">(PDF)</a>
                 </li>
