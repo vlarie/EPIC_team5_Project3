@@ -12,8 +12,11 @@
     {% include "navbar.html" %}
 
     <div class="container-fluid align-items-center" id="modelContainer">
-        <img id="imgMain" src="../static/images/1250x600.png" alt="Facial Keypoint main image">
-
+        <img id="imgMain" src="../static/images/keypoint_carousel.jpg" alt="Facial Keypoint main image">
+        <div class="carousel-caption d-none d-md-block">
+            <h1 id="imgHeader">Facial Keypoint Detector</h1>
+            <h4 id="imgSubhead">CNN trained to detect 15 keypoints</h4>
+        </div>
     <!-- @TODO fix spacing on photos and add caption credit where applicable -->
     <!-- @TODO update with correct info -->
         <section id="about">
@@ -22,17 +25,26 @@
             <h3 id ="subhead">Methods</h3>
             <p>The purpose of this portion of the project was to train a machine learning model to identify 15 keypoints on human faces including center of each eye, tip of nose, outer end of each eyebrow, etc. To achieve this, we used a Convolutional Neural Network design recommended by Peter Skvarenina and implemented with the Keras open source neural network library running on top of the TensorFlow backend<a href="#references"><sup>[1]</sup></a>.</p>
             <h3 id ="subhead">Dataset</h3>
-            <p>We used a dataset provided to Kaggle.com by Dr. Yoshua Bengio of the University of Montreal for Kaggle's Facial Keypoints Detection competition<a href="#references"><sup>[2]</sup></a>. The dataset consisted of 8,832 images – 7,049 with identified keypoints for training and 1,783 images for testing. However, upon investigation we discovered that nearly 5,000 of the training images had only 5 keypoints identified. Some users of the dataset have filled in the missing information with averages from the other images, but we thought this had too great a potential to produce error and chose to use only the 2,000 images with 15 keypoints identified from the original dataset.</p>
+            <p>We used a dataset provided to Kaggle.com by Dr. Yoshua Bengio of the University of Montreal for Kaggle's Facial Keypoints Detection competition<a href="#references"><sup>[2]</sup></a>. The dataset consisted of 8,832 images – 7,049 with identified keypoints for training and 1,783 images for testing. However, upon investigation we discovered that nearly 5,000 of the training images had only 4 keypoints identified. Some users of the dataset have filled in the missing information with averages from the other images, but we thought this had too great a potential to produce error and chose to use only the 2,000 images with 15 keypoints identified from the original dataset.</p>
             <!-- @TODO check for image on kaggle of dataset -->
             <!-- @TODO create figure of keypoint list -->
-            <figure class="figure">
-                <a href="https://talhassner.github.io/home/projects/Adience/Adience-data.html">
-                    <img id="imgContent" src="../static/images/dataset.png" alt="Dataset"> 
-                </a>
-                <figcaption class="figure-caption text-right">
-                    <p>photo from Adience Benchmark<a href="#references"><sup>[2]</sup></a></p>
-                </figcaption>
-            </figure>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="thumbnail">
+                        <img src="../static/images/KPtrainingfaces3.png" alt="Facial keypoint dataset without keypoints" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Faces in Facial Keypoint Detection dataset<a href="#references"><sup>[2]</sup></a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="thumbnail">
+                        <img src="../static/images/KPtrainingfacesKP1.png" alt="Facial keypoint dataset with keypoints" style="width:100%">
+                        <div class="caption text-left">
+                        <p id="thumbCaption">Faces with keypoints in Facial Keypoint Detection dataset<a href="#references"><sup>[2]</sup></a></p>
+                        </div>
+                    </div>
+                </div>
         </section>
 
         <hr>
@@ -42,7 +54,6 @@
             <hr id="underline">
             <h3 id ="subhead">CNN Implementation in Keras</h3>
             <p>We implemented Skvarenina’s model in Keras with the structure shown in the diagram below. In this structure, the images are preprocessed to grayscale and converted to a 96x96 2D array of numbers between -1 and 1 used as the input to the model. The output of the model is 30 floating point numbers representing the (x, y) coordinates of each facial keypoint.</p>
-            <!-- @TODO update image -->
             <figure class="figure">
                 <a href="">
                     <img id="imgContent" src="../static/images/KPnetwork-architecture.png" alt="CNN Overview">
@@ -56,24 +67,21 @@
             <p>The training for this model was done in Google’s Colab notebook environment using their GPU hardware accelerator option (approximately 10x faster than running in Colab without hardware acceleration). We ran the training for 100 epochs, taking just over 3 hours to complete.</p>
             <h3 id ="subhead">Performance</h3>
             <p>The results from our training process are shown below. After 100 epochs, accuracy leveled off and showed no further improvement in the absence of changing methodology. Our model got to ~70% accuracy for the training, but only ~30% accuracy for the test pass.</p>
-            <!-- @TODO update image -->
             <figure class="figure">
                 <a href="">
-                    <img id="imgContent" src="../static/images/results.png" alt="Accuracy rates on training and test data">
+                    <img id="imgContent" src="../static/images/KPmodelaccuracy.png" alt="Accuracy rates on training and test data">
                 </a>
                 <figcaption class="figure-caption text-right">
-                    <!-- @TODO Check with Troy on image source -->
-                    <p>photo from Gil Levi and Tal Hassner<a href="#references"><sup>[1]</sup></a></p>
+                    <p>generated by Troy Bailey &nbsp; &copy; 2019 TEAM EPIC</p>
                 </figcaption>
             </figure>
             <p>Skvarenina reports that “with some trivial tricks” he can achieve 80-90% accuracy with 30 epochs. The details of these tricks are not provided; however, upon visual inspection of our results, we felt the accuracy was fairly good in terms of distance to the training keypoint locations. In the image below, the manually identified keypoints are shown in green while our model’s predicted keypoints are shown in red.</p>
-            <!-- @TODO update image -->
             <figure class="figure">
                 <a href="">
-                    <img id="imgContent" src="../static/images/results.png" alt="Results (From Gil Levi and Tal Hassner’s paper)">
+                    <img id="imgContent" src="../static/images/KPaccuracyTest.png" alt="Results (From Gil Levi and Tal Hassner’s paper)">
                 </a>
                 <figcaption class="figure-caption text-right">
-                    <p>photo from Gil Levi and Tal Hassner<a href="#references"><sup>[1]</sup></a></p>
+                    <p>generated by Troy Bailey &nbsp; &copy; 2019 TEAM EPIC</p>
                 </figcaption>
             </figure>
             <p>We felt our model's keypoint placements were adequate to continue with our application. It's also difficult to determine the best approach for measuring accuracy in this model.  For a simple classifier, predictions are either purely right or purely wrong, so accuracy is usually defined as percentage of predictions which are right. For a network generating numerical output such as coordinates in an image, each prediction has its own spectrum of "rightness" based on proximity to the expected coordinates. In order to define accuracy of a group of predicted coordinates, some choice must be made on how to define the overall accuracy as a function of all the individual prediction accuracies.  Are they weighted evenly (i.e. mean error)?  Do further-off predictions hurt accuracy more (i.e. mean square error)?  Depending on the application, one approach may be better suited than the next.</p>
