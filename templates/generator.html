@@ -12,10 +12,12 @@
     {% include "navbar.html" %}
 
     <div class="container-fluid align-items-center" id="modelContainer">
+        <div>
         <img id="imgMain" src="../static/images/generator_carousel.jpg" alt="Face Generator main image">
         <div class="carousel-caption d-none d-md-block">
             <h1 id="carouselHeader">Random Face Generator</h1>
             <h4 id="carouselSubhead">DCGAN trained to randomly generate a face</h4>
+        </div>
         </div>
 <!-- @TODO fix spacing on photos and add caption credit where applicable -->
 <!-- @TODO update with correct info -->
@@ -24,14 +26,16 @@
             <hr id="underline">
             <h3 id ="subhead">Methods</h3>
             <p>The purpose of this section of the project was to use machine learning algorithms to generate human faces that viewers would be unable to distinguish from actual photographs of faces.</p>
-            <p>To achieve our purpose, we implemented a Deep Convolutional Generative Adversarial Network [DCGAN]. This methodology uses two machine learning models, a Discriminator and a Generator, which are interconnected in a feedback loop. The discriminator is a classical Convolutional Neural Network that classifies images into categories; in this case the categories are “real” and “fake”. The discriminator is trained by presenting it with fakes created by the generator and real images from the dataset. The generator uses feedback from the discriminator to improve its ability to generate fake images that the discriminator will improperly predict are real. In narrative terms, the generator is trying to improve its ability to create fake images that will fool the discriminator and the discriminator is trying to improve its ability to detect the generators fakes. The relationship is illustrated in the diagram below.</p>
+            <p>To achieve our purpose, we implemented a Deep Convolutional Generative Adversarial Network (DCGAN). This methodology uses two machine learning models, a Discriminator Network and a Generator Network, which are interconnected in a feedback loop. The discriminator is a classical Convolutional Neural Network (CNN) that classifies images into categories; in this case the categories are “real” and “fake”. The discriminator is trained by presenting it with fakes created by the generator and real images from the dataset. The generator uses feedback from the discriminator to improve its ability to generate fake images that the discriminator will improperly predict are real.</p>
+            <p>In narrative terms, the generator is trying to improve its ability to create fake images that will fool the discriminator, and the discriminator is trying to improve its ability to detect the generators fakes. The relationship is illustrated in the diagram below.</p>
             <figure class="figure">
                 <a href="">
-                    <img id="imgContent" src="../static/images/GANDiagram.png" alt="Dataset"> 
+                    <!-- @TODO Update to better image with faces photoshopped over MNIST images -->
+                    <img id="imgContent" src="../static/images/DCGANDiagramFaces.jpg" alt="Dataset"> 
                 </a>
                 <figcaption class="figure-caption text-right">
                     <!-- @TODO Update caption and reference -->
-                    <p>photo from <a href="#references"><sup>O'Reilly [2]</sup></a></p>
+                    <p>original image from Medium<a href="#references"><sup>[1]</sup></a><br>edited by Troy Bailey to show faces in dataset &nbsp; &copy; 2019 TEAM EPIC</p>
                 </figcaption>
             </figure>
             
@@ -40,7 +44,7 @@
 
             <h3 id ="subhead">Dataset</h3>
             <!-- @TODO Update references -->
-            <p>We used the CelebA dataset(reference link) http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html made available through Kaggle.com(reference link). The dataset consists of 202,599 images of 10,177 celebrities. The dataset is annotated with 4 landmark locations (eyes, nose, corners of the mouth) and 40 binary attributes such as male, young, beard, glasses, blonde, etc.</p>
+            <p>We used the CelebA dataset<a href="#references"><sup>[2]</sup></a> made available through Kaggle.com(reference link). The dataset consists of 202,599 images of 10,177 celebrities. The dataset is annotated with 5 landmark locations (each eye, nose, and corners of the mouth) and 40 binary attributes such as male, young, beard, glasses, blonde, etc.</p>
             <figure class="figure">
                 <a href="">
                     <img id="imgContent" src="../static/images/celebA.png" alt="CelebA"> 
@@ -108,7 +112,7 @@
                     <p>photo from Gil Levi and Tal Hassner<a href="#references"><sup>[1]</sup></a></p>
                 </figcaption>
             </figure>
-            <p>Rather than pursue more training epochs, we decided to adjust some of the model variables to achieve different results. The discriminator and generator effectively encode and decode the images into a 10x10 array of floating-point numbers from -1 to 1 (the Z vector). This encoding requires the model to simplify the variability into 100 numbers. We speculated that giving the model a larger encoding space might al1ow it to encode more information in the. We tried 12x12 and 15x15 Z Vectors with the results from a single training epoch shown below.</p>
+            <p>Rather than pursue more training epochs, we decided to adjust some of the model variables to achieve different results. The discriminator and generator effectively encode and decode the images into a 10x10 array of floating-point numbers from -1 to 1 (the Z vector). This encoding requires the model to simplify the variability into 100 numbers. We speculated that giving the model a larger encoding space might allow it to encode more information in the. We tried 12x12 and 15x15 Z Vectors with the results from a single training epoch shown below.</p>
             <div class="row">
                 <!-- @TODO Update all captions and alt text -->
                 <div class="col-md-4">
@@ -179,7 +183,7 @@
             <h1>LEARNINGS</h1>
             <hr id="underline">
             <!-- @TODO Creepy generated faces go here -->
-            <p>As noted in the Keypoints portion of our project, Datasets merit careful consideration. The celebA dataset has many uses and the various images are helpful for many applications. If for example the goal was to train a model to recognize certain individuals when presented in different poses and costumes, celebA would be idea. In the case of using a DCGAN to produce convincing images, the variety included in celebA will require much more complicated model and training time to master all the variety in the dataset. For our purposes, a subset of celebA with less variation, yielded better results.</p>
+            <p>As noted in the Keypoints portion of our project, Datasets merit careful consideration. The CelebA dataset has many uses and the various images are helpful for many applications. If for example the goal was to train a model to recognize certain individuals when presented in different poses and costumes, CelebA would be ideal. In the case of using a DCGAN to produce convincing images, the variety included in CelebA will require much more complicated model and training time to master all the variety in the dataset. For our purposes, a subset of CelebA with less variation, yielded better results.</p>
             <p>An interesting observation from this portion of the project was that it provided a good illustration of machine learning in terms of mimicking how humans learn. The process of our DCGAN learning to create faces has many parallels with humans mastering the same skill. At first children scribble and declare it’s a face. As they mature they understand that faces are round and have eyes and a mouth and therefore start drawing ‘happy faces’. They continue to progress and start adding noses, hair, shading, and color in their attempts to draw more representational faces. The following video produced from the images that the generator produced in the first training epoch illustrate this learning parallel.</p>
             <p></p>
         </section>
@@ -192,8 +196,12 @@
             <ol>
                 <!-- @TODO Update all references -->
                 <li id="refs">
-                    Gil Levi and Tal Hassner. <a href="https://talhassner.github.io/home/publication/2015_CVPR"><i>Age and Gender Classification Using Convolutional Neural Networks</i></a>, IEEE Workshop on Analysis and Modeling of Faces and Gestures (AMFG), at the IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), Boston, June 2015 <a href="https://github.com/GilLevi/AgeGenderDeepLearning">(Repo)</a><a href="https://talhassner.github.io/home/projects/cnn_agegender/CVPR2015_CNN_AgeGenderEstimation.pdf">(PDF)</a>
+                    Thalles Silva, <a href="https://medium.freecodecamp.org/an-intuitive-introduction-to-generative-adversarial-networks-gans-7a2264a81394"><i>An intuitive introduction to Generative Adversarial Networks (GANs)</i></a>, Medium, Jan. 2018 
                 </li>
+                <li id="refs">
+                    Ping Luo, Ziwei Liu, et al., <a href="http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html"><i>Large-scale CelebFaces Attributes (CelebA) Dataset</i></a>, <a href="https://www.kaggle.com/jessicali9530/celeba-dataset/home">Kaggle Datasets</a>, 2018
+                </li>
+Gil Levi and Tal Hassner. <a href="https://talhassner.github.io/home/publication/2015_CVPR"><i>Age and Gender Classification Using Convolutional Neural Networks</i></a>, IEEE Workshop on Analysis and Modeling of Faces and Gestures (AMFG), at the IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), Boston, June 2015 <a href="https://github.com/GilLevi/AgeGenderDeepLearning">(Repo)</a><a href="https://talhassner.github.io/home/projects/cnn_agegender/CVPR2015_CNN_AgeGenderEstimation.pdf">(PDF)</a>
                 <li id="refs">
                     Eran Eidinger, Roee Enbar, and Tal Hassner, <a href="https://talhassner.github.io/home/publication/2014_IEEE_TIFS"><i>Age and Gender Estimation of Unfiltered Faces</i></a>, Transactions on Information Forensics and Security (IEEE-TIFS), special issue on Facial Biometrics in the Wild, Volume 9, Issue 12, pages 2170 - 2179, Dec. 2014 <a href="https://talhassner.github.io/home/projects/Adience/EidingerEnbarHassner_tifs.pdf">(PDF)</a>
                 </li>
