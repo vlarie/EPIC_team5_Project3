@@ -1,7 +1,5 @@
-<!-- @TODO remove commented out elements -->
-
 <!-- NAVBAR -->
-<div id="nav-box" class=".bg-primary">
+<div id="nav-box" class=".bg-primary" role="navigation">
     <header class="navbar navbar-expand-lg navbar-light fixed-top" id="myNavbar">
         <a class="navbar-brand mb-0" href="/" id="epic-title">
             <h3 id="navbarHeader">EPIC Faces</h3>
@@ -9,14 +7,35 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-    
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto d-lg-none " id="toggleNavLinks">
+                <li class="nav-item">
+                    <a class="nav-link" href="/keypoints"><i class="material-icons">my_location</i> &nbsp;&nbsp;Keypoints</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/agegender"><i class="material-icons">people_outline</i> &nbsp;&nbsp;Age & Gender</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/generator"><i class="material-icons">face</i> &nbsp;&nbsp;Generator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/aboutus"><i class="material-icons">recent_actors</i> &nbsp;&nbsp;About Us</a>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
         <!-- NAVIGATION LINKS -->
-        <div class="btn-toolbar flex-grow-1 text-right">
+        <div class="collapse navbar-collapse btn-toolbar flex-grow-1 text-right">
             <ul class="navbar-nav ml-auto flex-nowrap" id="nav-links">
                 <!-- FACIAL KEYPOINTS -->
                 <div class="btn-group">
                     <button type="button" class="btn btn-secondary ml-2" onclick="location.href='/keypoints'">
-                    <i class="material-icons">my_location</i>  Keypoints </button>
+                    <i class="material-icons">my_location</i> Keypoints </button>
                     <button type="button" class="btn btn-secondary bt-lg dropdown-toggle dropdown-toggle-split" id="btn-keypoints" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
@@ -31,7 +50,7 @@
                 <!-- AGE & GENDER CLASSIFIER -->
                 <div class="btn-group">
                     <button type="button" class="btn btn-secondary ml-2" onclick="location.href='/agegender'">
-                    <i class="material-icons">people_outline</i>  Age & Gender </button>
+                    <i class="material-icons">people_outline</i> Age & Gender </button>
                     <button type="button" class="btn btn-secondary bt-lg dropdown-toggle dropdown-toggle-split" id="btn-agegender" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
@@ -61,13 +80,10 @@
                 <!-- ABOUT US -->
                 <li class="nav-item">
                     <button type="button" class="btn btn-secondary bt-lg ml-2" onclick="location.href='/aboutus'" id="btn-keypoints" aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">recent_actors</i>  About Us </button>
+                        <i class="material-icons">recent_actors</i> About Us </button>
                         <!-- Other icon options "bubble_chart, contacts, dashboard, developer_board, equalizer, fingerprint, folder_shared, info, info_outline"  -->
                         <!-- "more_horiz/vert, multiline_chart, poll, question_answer, star_border, trending_up, widgets" -->
                 </li>
-                <!-- Removed from above buttons -->
-                <!-- onclick="location.href='/agegender'" -->
-                 <!-- onclick="location.href='/generator'" -->
             </ul>
         </div>
     </header>

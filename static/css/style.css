@@ -17,7 +17,7 @@ hr {
 
 #underline {
     border-top: 2px solid rgba(255, 255, 255, 0.15);
-    width: 35%;
+    width: 45%;
     margin-right: 100%;
     margin-top: 0rem;
 }
@@ -49,9 +49,6 @@ p {
 
 
 /* NAVBAR */
-/* #navbarHeader {
-    
-} */
 
 #nav-links {
     padding-bottom: 0px;
